@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="container d-flex justify-content-between flex-wrap text-center">
+    <div class="bg-info text-white p-3 ps-5 pe-5 mt-2 rounded-2">
+      <h2>
+        الايداعات
+        <i class="bx bx-cloud-download"></i>
+      </h2>
+      <%= deposits || 0 %> روبل
+    </div>
+
+    <div class="bg-danger text-white p-3 ps-5 pe-5 mt-2 rounded-2">
+      <h2>
+        المستخدمين
+        <i class="bx bx-group"></i>
+      </h2>
+      <%= users || 1 %> شخص
+    </div>
+    <div class="bg-success text-white p-3 ps-5 pe-5 mt-2 rounded-2">
+      <h2>
+        المدفوعات
+        <i class="bx bx-cloud-upload"></i>
+      </h2>
+      <%= payments || 0 %> روبل
+    </div>
+  </div>
+
+  <section class="row mt-4">
+    <hr class="text-info" />
+    <div class="col col-12 col-md-6 col-lg-6">
+      <%- include('./topDeposits') %>
+    </div>
+    <div class="col col-12 col-md-6 col-lg-6">
+      <%- include('./topPayments.ejs') %>
+    </div>
+  </section>
+</div>

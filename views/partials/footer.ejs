@@ -1,0 +1,58 @@
+<footer class="text-center text-white">
+  <img src="/img/logo1.png" alt="" />
+
+  <p>منصة BitCash الدولية تعتمد علي تداول العملات المشفرة وخدمات إدارة الثقة</p>
+
+  <p>
+    <strong class="d-block">هاتف</strong>
+    <i class="bx bx-phone"></i>
+    <a href="tel:+447912345667">+447912345667</a>
+  </p>
+
+  <p>
+    <strong class="d-block">بريدنا</strong>
+    <i class="bx bx-envelope"></i>
+    <a href="mailto:info@bitcash.coin">info@bitcash.coin</a>
+  </p>
+
+  <p>
+    <strong class="d-block">تبوك</strong>
+    <span>
+      <i class="bx bx-location-plus"></i>
+      342A بيتربورو , طريق إيستفيلد PE1 4RD, المملكة المتحدة
+    </span>
+  </p>
+
+  <ul
+    class="d-flex flex-wrap text-center justify-content-center align-items-center"
+  >
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="/">الصفحة الرئيسية</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/aboutus">معلومات عنا</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contacts">اتصل بنا</a>
+    </li>
+    <% if (typeof isLogin != "undefined" && isLogin) { %>
+    <li class="nav-item">
+      <a class="nav-link" href="/user">خزانة</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">اذهب للخارج</a>
+    </li>
+    <% } else { %>
+    <li class="nav-item">
+      <a class="nav-link" href="/login">تسجيل الدخول</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/signup">انشاء حساب</a>
+    </li>
+    <% } %>
+  </ul>
+
+  <p>&copy; 2022 BitCash جميع الحقوق محفوظة</p>
+</footer>
+
+<script src="/js/bootstrap.min.js"></script>

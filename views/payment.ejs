@@ -1,0 +1,85 @@
+<%- include('./partials/header', {title}) %>
+
+    <body>
+        <header class="user">
+            <%- include('./partials/navbar') %>
+
+                <div class="container pt-5">
+                    <p class="mt-2 text-center">
+                        <a href="/user" class="nav-link text-light">الصفحة الرئيسية<i class="bx bx-left-arrow"></i>الودائع</a>
+                    </p>
+
+                    <div class="d-flex justify-content-center">
+
+                        <%- include('./partials/menu-item') %>
+                        
+                    </div>
+                </div>
+        </header>
+
+        <% if (typeof error != "undefined" && error) { %>
+            <h5 class="text-center text-info alert alert-danger p-4">
+                <%= error %> 
+            </h5>
+        <% } %>
+        
+        <form class="container text-center fs-5" method="post" action="/user/payment">
+            <div class="w-50 m-auto">
+                <label for="">نظام الدفع</label> <br>
+                <select name="paymentMethod" id="plansId" class="form-select" aria-label="Default select example">
+                    <option value="payeer">Payeer</option>
+                    <option value="prefectMoney">PrefectMoney</option>
+                    <option value="faucetPay">FaucetPay</option>
+                </select>
+            </div>
+            <div class="w-50 m-auto">
+                <label for="">المحفظة</label>
+                <input type="text" id="wallet" required name="wallet" class="form-control">
+            </div>
+            <div class="w-50 m-auto">
+                <label for="">المبلغ</label>
+                <input type="number" id="balance" required name="balance" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-info w-25 mt-4">
+                سحب
+            </button>
+        </form>
+
+        <div class="container mt-5">
+            <div class="text-center bg-dark text-light p-2 fs-4">
+                <th colspan="3">سجل الدفع</th>
+            </div>
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <td>الحالة</td>
+                    <td>المحفظة</td>
+                    <td>النظام</td>
+                    <td>المبلغ</td>
+                    <td>التاريخ</td>
+                </tr>
+                <% if (typeof allWithdrawal != "undefined" && allWithdrawal) { %>
+                    <% allWithdrawal.map((dep, i) => { %> 
+                        <tr>
+                            <td>تم الدفع </td>
+                            <td><%= dep.wallet %></td>
+                            <td><%= dep.paymentMethod %></td>
+                            <td><%= dep.balance %> روبل</td>
+                            <td dir="ltr" class="text-end"><%= dep.time %></td>
+                        </tr>
+                        <%  }) %>
+                <% }  else { %> 
+                    <tr>
+                        <td class="text-center">
+                             لا يوجد سحب
+                        </td>
+                    </tr>
+                <% } %> 
+            </table>    
+        </div>
+        <%- include('./partials/footer') %>
+
+    </body>
+
+
+    </html>

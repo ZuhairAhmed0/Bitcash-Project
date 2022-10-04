@@ -1,0 +1,95 @@
+<%- include('./partials/header', {title}) %>
+
+    <body>
+        <header class="user">
+            <%- include('./partials/navbar') %>
+                <div class="container pt-5">
+                    <span class="text-white btn btn-danger fw-bold">
+                        مرحب بك اسم المستخدم الخاص بك
+                        <i class="bx bx-user"></i>
+                        <%= userData.username %> 
+                    </span>
+                    <p class="mt-2 text-center">
+                        <a href="/user" class="nav-link text-light">الصفحة الرئيسية<i class="bx bx-left-arrow"></i>الخزانة</a>
+                    </p>
+
+                    <%- include('./partials/menu-item') %>
+                        
+                </div>
+        </header>
+
+
+
+        <div class="container user-palance d-flex justify-content-center">
+            <div class="row">
+                <section class="col-11 col-sm-5 col-lg-4 text-dark fs-5 bg-white">
+                    <p>
+                        <strong>الإيداع النشط</strong>
+                        <br>
+                        <span class="text-bro">
+                            <%= userData.activeDeposit || 0 %> روبل
+                        </span>
+                    </p>
+                    <img src="/img/service5.png" alt="" height="70" width="70">
+                </section>
+                <section class="col-11 col-sm-5 col-lg-3 text-dark fs-5 bg-white">
+                    <p>
+                        <strong>اﻷرباح</strong>
+                        <br>
+                        <span class="text-bro">
+                            <%= userData.profits || 0 %> روبل
+                        </span>
+                    </p>
+                    <img src="/img/service2.png" alt="" height="70" width="70">
+                </section>
+                <section class="col-11 col-sm-5 col-lg-4 text-dark fs-5 bg-white">
+                    <p>
+                        <strong>الدفع</strong>
+                        <br>
+                        <span class="text-bro">
+                            <%= userData.payment || 0 %> روبل
+                        </span>
+                    </p>
+                    <img src="/img/service4.png" alt="" height="70" width="70">
+                </section>
+                <section class="col-11 col-sm-5 col-lg-4 text-dark fs-5 bg-white">
+                    <p>
+                        <strong>الإيداع الأخير</strong>
+                        <br>
+                        <span class="text-bro">
+                            <%= userData.lastDeposit || 0 %> روبل
+                        </span>
+                    </p>
+                    <img src="/img/service6.png" alt="" height="70" width="70">
+                </section>
+                <section class="col-11 col-sm-5 col-lg-3 text-dark fs-5 bg-white">
+                    <p>
+                        <strong>آخر دفعة</strong>
+                        <br>
+                        <span class="text-bro">
+                            <%= userData.lastPayment || 0 %> روبل
+                        </span>
+                    </p>
+                    <img src="/img/service7.png" alt="" height="70" width="70">
+                </section>
+                <section class="col-11 col-sm-5 col-lg-4 text-dark fs-5 bg-white">
+                    <p>
+                        <strong>مستثمر</strong>
+                        <br>
+                        <span class="text-bro">
+                            <%= userData.investor || 0 %> روبل
+                        </span>
+                    </p>
+                    <img src="/img/service8.png" alt="" height="70" width="70">
+                </section> 
+            </div>
+        </div>
+        
+        
+
+        <%- include('./partials/footer') %>
+
+    </body>
+
+
+    </html>

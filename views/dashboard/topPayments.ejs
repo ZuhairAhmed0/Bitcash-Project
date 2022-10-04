@@ -1,0 +1,26 @@
+<h4 class="text-bro mt-3">المدفوعات الاخيرة</h4>
+<table class="table border table-light mt-4">
+  <thead class="table-info text-center">
+    <tr>
+      <th scope="col">
+        <input type="checkbox" class="form-check-input form-check" />
+      </th>
+      <th>اسم المستخدم</th>
+      <th>النظام</th>
+      <th>المبلغ / روبل</th>
+      <th>التاريخ</th>
+    </tr>
+  </thead>
+  <tbody dir="ltr">
+    <% typeof topPayments !== "undefined" && topPayments.forEach((payment, i) =>
+    { %>
+    <tr>
+      <th scope="row"><%= i+1 %></th>
+      <td><%= payment.username %></td>
+      <td class="text-info"><%= payment.paymentMethod %></td>
+      <td class="text-center"><%= payment.balance %></td>
+      <td class="text-success"><%= payment.time %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

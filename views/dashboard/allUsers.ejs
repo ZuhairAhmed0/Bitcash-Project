@@ -1,0 +1,69 @@
+<div class="container">
+  <form
+    action="/dashboard/users/search"
+    method="post"
+    class="input-group mb-3"
+    dir="ltr"
+  >
+    <div class="input-group-text p-0">
+      <button class="btn btn-bro p-2 pe-5 ps-5">بحث</button>
+    </div>
+    <input
+      type="search"
+      name="search"
+      required
+      class="form-control text-end"
+      placeholder="ادخل اسم المستخدم او البريد الالكتروني"
+    />
+  </form>
+
+  <table class="table text-center table-light">
+    <thead class="table-info">
+      <tr>
+        <th scope="col">
+          <input type="checkbox" class="form-check-input form-check" />
+        </th>
+        <th>ID</th>
+        <th scope="col">اسم المستخدم</th>
+        <th scope="col">البريد الالكتروني</th>
+        <th scope="col" colspan="2">الصلاحية</th>
+      </tr>
+    </thead>
+    <tbody dir="ltr">
+      <% if(typeof allUsers != "undefined" && allUsers.length != 0) {
+      allUsers.forEach((user, i) => { %>
+      <tr>
+        <form action="/dashboard/users/<%= user._id %>" method="get">
+          <th scope="row">
+            <input type="checkbox" class="form-check-input form-check" />
+          </th>
+          <td><%= user._id %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td>
+            <button type="submit" class="btn btn-info fs-5">
+              <i class="bx bxs-user-detail"></i>تفاصيل
+            </button>
+          </td>
+        </form>
+      </tr>
+      <% if(typeof searchOption != "undefined" && searchOption) { %>
+      <button class="btn btn-danger m-1 fs-4" onclick="history.back()">
+        <i class="bx bx-exit"></i>
+        رجوع
+      </button>
+      <% } }) } else { %>
+
+      <tr class="mt-3">
+        <th class="p-4" colspan="5">
+          لا يوجد بحث مطابق
+          <i class="bx bx-left-arrow text-bro"></i>
+          <a href="/dashboard/users" class="text-bro"> حاول مجدداً </a>
+        </th>
+      </tr>
+
+      <% }%>
+    </tbody>
+  </table>
+</div>

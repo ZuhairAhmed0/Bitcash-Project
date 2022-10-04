@@ -1,0 +1,26 @@
+<h4 class="text-bro mt-3">الايداعات الاخيرة</h4>
+<table class="table border table-light mt-4">
+  <thead class="table-info text-center">
+    <tr>
+      <th scope="col">
+        <input type="checkbox" class="form-check-input form-check" />
+      </th>
+      <th>اسم المستخدم</th>
+      <th>النظام</th>
+      <th>المبلغ / روبل</th>
+      <th>التاريخ</th>
+    </tr>
+  </thead>
+  <tbody dir="ltr">
+    <% typeof topDeposits !== "undefined" && topDeposits.forEach((deposit, i) =>
+    { %>
+    <tr>
+      <th scope="row"><%= i+1 %></th>
+      <td><%= deposit.username %></td>
+      <td class="text-info"><%= deposit.paymentMethod %></td>
+      <td class="text-center"><%= deposit.balance %></td>
+      <td class="text-success"><%= deposit.time %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

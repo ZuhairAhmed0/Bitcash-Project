@@ -1,0 +1,55 @@
+<div class="plans pt-5">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <% plans.map((plan, i)=> { %> <% if(i % 2 != 0) { %>
+      <div class="col col-12 col-md-4 col-120 rounded-3 shadow-sm mt-4">
+        <% } else { %>
+        <div class="col col-12 col-md-4 mt-4">
+          <% } %>
+          <div class="card mb-4 rounded-3 shadow-sm border-danger">
+            <div class="card-header py-3">
+              <strong class="text-bro"> <%= plan.plan %>% </strong>
+              <img src="/img/planimg1.png" alt="" />
+            </div>
+
+            <% if(i % 2 != 0) { %>
+            <div class="card-body text-white">
+              <% } else { %>
+              <div class="card-body">
+                <% } %>
+                <h1 class="card-title pricing-card-title">
+                  % <%= plan.plan %>
+                </h1>
+
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>الحد الادني للايداع <%=plan.minimumDeposit%></li>
+                  <li>
+                    الحد الاعلي للايداع <% if (plan.plan!==200) { %>
+                    <%=plan.maximumDeposit%> <% } else { %> بدون قيود <% } %>
+                  </li>
+                  <li>
+                    <% if (plan.withdrawTime==1) { %> سحب كل <%=
+                    plan.withdrawTime %> ساعة <% } else { %> سحب في اي وقت <% }
+                    %>
+                  </li>
+                  <li>
+                    <% if (plan.withdrawFee==1) { %> رسوم سحب %1 <% } else { %>
+                    بدون رسوم سحب <% plan.withdrawFee } %>
+                  </li>
+                  <li>مدة الايداع <%= plan.depositPeriod %> يوم</li>
+                </ul>
+                <% if (typeof isLogin != "undefined" && isLogin) { %>
+                <a href="/user/invest" class="w-50 btn btn-lg btn-dark">
+                  <% } else { %>
+                  <a href="/login" class="w-50 btn btn-lg btn-dark">
+                  <% } %> استثمر الان</a
+                >
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

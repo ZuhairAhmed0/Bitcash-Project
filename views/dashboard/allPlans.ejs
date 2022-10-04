@@ -1,0 +1,132 @@
+<div class="container">
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">الخطة</th>
+        <th scope="col">الحد الادني للايداع</th>
+        <th scope="col">الحد الاعلي للايداع</th>
+        <th scope="col">مدة الايداع / يوم</th>
+        <td colspan="2"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% typeof allPlans !== "undefined" && allPlans.forEach((plan, i) => { %>
+      <form action="" method="post">
+        <tr>
+          <th scope="row"><%= i+1 %></th>
+          <td>
+            <input
+              type="number"
+              name="plan"
+              value="<%= plan.plan %>"
+              class="form-control text-center"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="minimumDeposit"
+              value="<%= plan.minimumDeposit %>"
+              class="form-control text-center"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="maximumDeposit"
+              value="<%= plan.maximumDeposit %>"
+              class="form-control text-center"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="depositPeriod"
+              value="<%= plan.depositPeriod %>"
+              class="form-control text-center"
+            />
+          </td>
+          <td>
+            <button
+              type="submit"
+              formaction="/dashboard/plans/<%= plan._id %>/?_method=PATCH"
+              class="btn btn-success"
+            >
+              <i class="bx bx-edit"></i>
+            </button>
+          </td>
+          <td>
+            <button
+              type="submit"
+              formaction="/dashboard/plans/<%= plan._id %>/?_method=DELETE"
+              class="btn btn-danger"
+            >
+              <i class="bx bx-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </form>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<div class="container card mt-5 mb-5 p-3">
+  <form action="/dashboard/plans" method="post" class="p-3 m-auto w-75">
+    <label for="" class="fs-5">الخطة</label>
+    <input
+      type="number"
+      required
+      name="plan"
+      class="form-control mb-3"
+      placeholder="نوع الخطة مثلا 110%"
+    />
+    <label for="" class="fs-5">الحد الادني للايداع</label>
+    <input
+      type="number"
+      required
+      name="minimumDeposit"
+      class="form-control mb-3"
+      placeholder="100"
+    />
+    <label for="" class="fs-5">الحد الاعلي للايداع</label>
+    <input
+      type="number"
+      required
+      name="maximumDeposit"
+      class="form-control mb-3"
+      placeholder="10000000"
+    />
+    <label for="" class="fs-5">وقت السحب</label>
+    <input
+      type="number"
+      required
+      name="withdrawTime"
+      class="form-control mb-3"
+      placeholder="24 او 12"
+    />
+    <label for="" class="fs-5">رسوم سحب</label>
+    <input
+      type="number"
+      required
+      name="withdrawFee"
+      class="form-control mb-3"
+      placeholder="مثلا 1%"
+    />
+    <label for="" class="fs-5">مدة الايداع</label>
+    <input
+      type="number"
+      required
+      name="depositPeriod"
+      class="form-control mb-3"
+      placeholder="مثلا 15 يوم"
+    />
+    <button
+      type="submit"
+      class="btn btn-info m-auto d-block text-white pe-5 ps-5"
+    >
+      اضافة خطة
+    </button>
+  </form>
+</div>

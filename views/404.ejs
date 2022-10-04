@@ -1,0 +1,29 @@
+<%- include('./partials/header', {title}) %>
+
+    <body>
+        
+
+            <div class="text-center mt-5 pt-5">
+                <h2 class="">
+                    هناك خطأ ما!
+                </h2>
+
+                <img src="/img/index.jpeg" width="500" height="300" alt="">
+
+                <p class="mt-3">
+                تحقق من العنوان <i class="bx bx-left-arrow text-bro"></i> 
+                <% if (typeof isLogin != "undefined" && isLogin) { %>
+                    <a href="/user" class="text-bro">
+                <% } else  { %>
+                    <a href="/" class="text-bro">
+                <% } %> 
+                أو اذهب الى الصفحة الرئيسية</a>
+                </p>
+            </div>
+           
+        
+       
+    </body>
+
+
+    </html>

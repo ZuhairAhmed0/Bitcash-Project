@@ -1,0 +1,70 @@
+<%- include('./partials/header', {title}) %>
+<body>
+  <div class="d-flex justify-content-between g-0">
+
+    <div class="w-100">
+      <nav class="navbar bg-light mb-3 text-center" aria-label="Light offcanvas navbar">
+          <a class="navbar-brand text-bro fs-4 fw-bold" href="/dashboard">Bitcash Dashboard</a>
+          <span class="nav-item text-bro fs-4 fw-bold">
+            Admin 
+          </span>
+      </nav>
+      <section>
+
+        <% if (typeof allUsers != "undefined" && allUsers) { %>
+          <%- include('./dashboard/allUsers') %>
+        <% } else if (typeof allPlans != "undefined" && allPlans) { %>
+          <%- include('./dashboard/allPlans') %>
+        <% } else if (typeof userDetails != "undefined" && userDetails){ %>
+          <%- include('./dashboard/userDetails') %>
+        <% } else if (typeof topDepositsPage != "undefined" && topDepositsPage){ %>
+          <%- include('./dashboard/topDeposits', {topDeposits: topDepositsPage}) %>
+        <% } else if (typeof topPaymentsPage != "undefined" && topPaymentsPage){ %>
+          <%- include('./dashboard/topPayments', {topPayments: topPaymentsPage}) %>
+        <% } else { %> 
+          <%- include('./dashboard/controlPanel') %>
+        <% } %> 
+      </section>
+   </div>
+
+   <div class="d-flex flex-column flex-shrink-1 bg-light" style="width:7rem; height: 100vh;">
+    <button class="btn btn-danger py-3 border-bottom rounded-0" onclick="history.back()">
+      <i class="bx bx-exit  fs-4"></i>
+    </button>
+      <ul class="nav nav-pills dashboard-link nav-flush flex-column mb-auto text-center">
+        <li>
+          <a href="/dashboard" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard">
+            <i class='bx bxs-dashboard fs-1'></i>
+          </a>
+          <button class="btn btn-info" type="button">لوحة التحكم</button>
+        </li>
+        <li>
+          <a href="/dashboard/users" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders">
+            <i class='bx bxs-group fs-1' ></i>
+          </a>
+          <button class="btn btn-info" type="button">المستخدمين</button>
+        </li>
+        <li>
+          <a href="/dashboard/plans" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products">
+            <i class='bx bx-table fs-1'></i>
+          </a>
+          <button class="btn btn-info" type="button">خطط الاستثمار</button>
+        </li>
+        <li>
+          <a href="/dashboard/top-deposits" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders">
+            <i class="bx bx-cloud-download fs-1"></i>
+          </a>
+          <button class="btn btn-info" type="button">الايداعات الاخيرة</button>
+        </li>
+        <li>
+          <a href="/dashboard/top-payments" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders">
+            <i class="bx bx-cloud-upload fs-1"></i>
+          </a>
+          <button class="btn btn-info" type="button">المدفوعات الاخيرة</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="/js/bootstrap.min.js"></script>
+</body>
+</html> 
