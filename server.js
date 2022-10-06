@@ -5,7 +5,7 @@ const app = require("./app");
 const port = process.env.PORT || 3000;
 dotenv.config({ path: "./.env" });
 
-mongoose.connect(process.env.DB_URL, (err) => {
+mongoose.connect(process.env.DB_URL_ATLAS, (err) => {
   console.log("DB connection successful!");
 });
 
